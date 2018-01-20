@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.alert .mat-simple-snackbar {
+  justify-content: center;
+}
+
+.alert-success{
+  background-color: forestgreen;
+  color: white;
+  border-color: black;
+}
+
+.alert-error{
+  background-color: red;
+  color: white;
+  border-color: black;
+}
