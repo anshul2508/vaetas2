@@ -18,6 +18,8 @@ import {AlertService} from './services/alert.service';
 import {IntroService} from './services/intro.service';
 import {YoutubeService} from './services/youtube.service';
 import {VaetasService} from './services/vaetas.service';
+import {reducers} from './reducers/index';
+import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {VaetasService} from './services/vaetas.service';
     SignupComponent,
     AccountsComponent,
     NotFoundComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [
@@ -37,7 +40,7 @@ import {VaetasService} from './services/vaetas.service';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
 
 
   ],

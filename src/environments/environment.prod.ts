@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  vaetasApiBaseUrl: 'https://app.vaetas.com/api',
 };

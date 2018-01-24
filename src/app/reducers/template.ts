@@ -23,7 +23,7 @@ export const initialState: TemplateState = {
   loading: false
 };
 
-export function reducer (state: TemplateState, action: Action) {
+export function reducer (state = initialState, action: Action) {
   switch (action.type) {
     case TEMPLATE_LIST_REQUEST : {
       return {...state, loading: true};

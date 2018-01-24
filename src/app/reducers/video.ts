@@ -20,7 +20,7 @@ export const initialState: VideoState = {
   loading: false
 };
 
-export function reducer (state: VideoState, action: Action): VideoState {
+export function reducer (state = initialState, action: Action): VideoState {
   switch (action.type) {
     case VIDEO_IMPORT_SUCCESS : {
       const video = action.payload;

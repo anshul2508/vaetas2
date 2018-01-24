@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {VaetasService} from '../../services/vaetas.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor() { }
+  constructor( public vaetas: VaetasService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -18,9 +19,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('login successful');
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    this.vaetas.login(email, password).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
   }
-
-
 
 }
