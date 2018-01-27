@@ -20,6 +20,7 @@ import {YoutubeService} from './services/youtube.service';
 import {VaetasService} from './services/vaetas.service';
 import {reducers} from './reducers/index';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
+import { VideosComponent } from './Components/videos/videos.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ForgetPasswordComponent } from './Components/forget-password/forget-pas
     AccountsComponent,
     NotFoundComponent,
     ForgetPasswordComponent,
+    VideosComponent,
 
   ],
   imports: [

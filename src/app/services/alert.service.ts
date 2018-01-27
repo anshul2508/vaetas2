@@ -6,7 +6,7 @@ export class AlertService {
 
   constructor( private snackbar: MatSnackBar) { }
 
-  sucess(message: string, duration = 3000) {
+  success(message: string, duration = 3000) {
     this.snackbar.open(message, '', {
       duration: duration,
       horizontalPosition: 'center',

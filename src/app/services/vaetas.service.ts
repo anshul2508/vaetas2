@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Store} from '@ngrx/store';
 import {State} from '../reducers/index';
 import {Router} from '@angular/router';
+import {User} from '../models/user';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -11,15 +12,32 @@ export class VaetasService {
 
   private BASE_URL = 'https://app.vaetas.com/api';
 
-  constructor( private httpClient: HttpClient, private store: Store<State>,
-               private router: Router) {}
+
+  constructor(private httpClient: HttpClient, private store: Store<State>,
+              private router: Router) {
+  }
 
   public login(email: string, password: string) {
-    return this.httpClient.request( 'get', this.BASE_URL + '/authenticate',
-      {params: new HttpParams().set('email', email).set('password', password)} );
+    return this.httpClient.request('get', this.BASE_URL + '/authenticate',
+      {params: new HttpParams().set('email', email).set('password', password)});
+  }
+
+  public resetPassword(data: {email: string}) {
+    const headers = new HttpHeaders();
+    return this.httpClient.post(this.BASE_URL + '/password/forgot', data,
+      {headers: headers.append('Content-Type', 'application/x-www-form-urlencoded')}
+    );
   }
 
 
+  public importVideos() {
+    const token = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders();
+    return this.httpClient.get(this.BASE_URL + '/videos' ,
+      {headers: headers.append('Authorisation', 'bearer ' + token) });
+  }
+
+}
 
 
 
@@ -41,5 +59,4 @@ export class VaetasService {
   //   }
   //   return options;
   // }
-}
 
