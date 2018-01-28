@@ -10,7 +10,7 @@ const AUTH_TOKEN = 'auth_token';
 @Injectable()
 export class VaetasService {
 
-  private BASE_URL = 'https://app.vaetas.com/api';
+  private BASE_URL = 'https://api.invidz.com/api';
 
 
   constructor(private httpClient: HttpClient, private store: Store<State>,
@@ -23,18 +23,18 @@ export class VaetasService {
   }
 
   public resetPassword(data: {email: string}) {
-    const headers = new HttpHeaders();
+    const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     return this.httpClient.post(this.BASE_URL + '/password/forgot', data,
-      {headers: headers.append('Content-Type', 'application/x-www-form-urlencoded')}
+      // {headers: headers}
     );
   }
 
 
   public importVideos() {
     const token = localStorage.getItem('auth_token');
-    const headers = new HttpHeaders();
+    const headers = new HttpHeaders({'Authorisation': 'bearer ' + token});
     return this.httpClient.get(this.BASE_URL + '/videos' ,
-      {headers: headers.append('Authorisation', 'bearer ' + token) });
+      {headers: headers });
   }
 
 }
