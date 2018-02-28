@@ -32,7 +32,7 @@ export class VaetasService {
 
   public importVideos() {
     const token = localStorage.getItem('auth_token');
-    const headers = new HttpHeaders({'Authorisation': 'bearer ' + token});
+    const headers = new HttpHeaders({'Authorization': 'bearer ' + token});
     return this.httpClient.get(this.BASE_URL + '/videos' ,
       {headers: headers });
   }
